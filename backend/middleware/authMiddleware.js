@@ -8,6 +8,9 @@ const authMiddleware = (req, res, next) => {
   }
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    // const crypto = require('crypto');
+    // const secret = crypto.randomBytes(64).toString('hex');
+    // console.log(secret);
     req.userId = decoded.userId;
     next();
   } catch (error) {
